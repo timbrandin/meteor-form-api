@@ -1,0 +1,70 @@
+<template name="form">
+{{#if title}}
+  <legend>{{title}}</legend>
+{{/if}}
+
+  <fieldset>
+  {{#each fields}}
+    {{field this}}
+  {{/each}}
+  </fieldset>
+</template>
+
+<template name="field">
+{{#if title}}
+  <label>{{title}}</label>
+{{/if}}
+
+{{field this}}
+
+{{#if description}}
+  <span class="help-block">{{description}}</span>
+{{/if}}
+</template>
+
+<template name="textfield">
+  <input type="text"
+    {{#if value}} value="{{value}}" {{/if}}
+    {{#if placeholder}} placeholder="{{placeholder}}" {{/if}}/>
+</template>
+
+<template name="textarea">
+  <textarea
+    {{#if placeholder}} placeholder="{{placeholder}}" {{/if}}>
+  </textarea>
+</template>
+
+<template name="checkbox">
+  <label class="checkbox">
+    <input type="checkbox"
+      {{#if value}} value="{{value}}" {{/if}}
+      {{#if placeholder}} placeholder="{{placeholder}}" {{/if}}> {{label}}
+  </label>
+</template>
+
+<template name="options">
+  {{#each options}}
+    {{field this}}
+  {{/each}}
+</template>
+
+<template name="list">
+  <ul>
+    <li>{{> textfield this}}</li>
+    <li><a href="javascript:;" class="add">Add item</a></li>
+  </ul>
+</template>
+
+<template name="autocomplete">
+  {{> textfield this}}
+</template>
+
+<template name="date">
+  {{> textfield this}}
+</template>
+
+<template name="daterange">
+  {{> textfield this}}
+  {{> checkbox this}}
+</template>
+
