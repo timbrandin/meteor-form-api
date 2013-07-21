@@ -5,20 +5,20 @@
 
   <fieldset>
   {{#each fields}}
-    {{field this}}
+    {{field value}}
   {{/each}}
   </fieldset>
 </template>
 
 <template name="field">
-{{#if title}}
-  <label>{{title}}</label>
+{{#if label}}
+  <label>{{label}}</label>
 {{/if}}
 
 {{field this}}
 
-{{#if description}}
-  <span class="help-block">{{description}}</span>
+{{#if hint}}
+  <span class="help-block">{{hint}}</span>
 {{/if}}
 </template>
 
@@ -37,8 +37,7 @@
 <template name="checkbox">
   <label class="checkbox">
     <input type="checkbox"
-      {{#if value}} value="{{value}}" {{/if}}
-      {{#if placeholder}} placeholder="{{placeholder}}" {{/if}}> {{label}}
+      {{#if checked}} checked="{{checked}}" {{/if}}> {{label}}
   </label>
 </template>
 
@@ -64,6 +63,7 @@
 </template>
 
 <template name="daterange">
+  {{> textfield this}}
   {{> textfield this}}
   {{> checkbox this}}
 </template>
