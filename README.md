@@ -3,68 +3,50 @@ meteor-form-api
 
 Form API for Meteor
 
-## A form would be created by specifying the fields wanted:
-
+## A form would be created by specifying the fields wanted (updated 7/21/13):
+    
     {
       title: 'Project',
       fields: {
-      
         title: {
-          type: 'textfield',
-          title: 'Title',
-          placeholder: 'Give me a title',
-          value: value || 'Some default title'
+          label: 'Title'
         },
-        
+
         description: {
-          type: 'textarea',
-          title: 'Description',
-          placeholder: 'Please type me a description'
+          as: 'textarea',
+          label: 'Description'
         },
-        
+
         features: {
-          type: 'select',
-          title: 'Features'
-          options: [
-            'Javascript',
-            'PHP',
-            'Git'
-          ],
+          as: 'list',
+          label: 'Features',
         },
-        
+
         team: {
-          type: 'number',
-          title: 'Team',
-          description: 'Number of team members'
+          label: 'Team',
+          hint: 'Number of team members'
         },
-        
+
         skills: {
-          type: 'autocomplete',
-          title: 'Skills',
-          description: 'Add skills used',
-          multiple: true
+          as: 'autocomplete',
+          label: 'Skills',
+          hint: 'Add skills used'
         },
-        
-        period: {
-          type: 'date',
-          title: 'Time period'
-          range: true,
-          value: [
-            new Date(2010,1,1),
-            new Date(2015,1,1),
+
+        range: {
+          as: 'daterange',
+          label: 'Date range'
+        }
+      },
+      actions: {
+        cancel: {},
+        submit: {
+          label: 'Save',
+          submit: [
+            function(form, form_state) {
+              return true;
+            }
           ]
-        },
-        
-        food_preference: {
-          type: 'options',
-          title: 'Food preference',
-          options: [
-            'Chicken',
-            'Fish',
-            'Beef'
-          ],
-          description: 'Choose your food preference',
-          limit: 1
         }
       }
     }
