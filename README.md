@@ -49,7 +49,7 @@ Form API for Meteor
         submit: {
           label: 'Save',
           submit: [
-            function(form, form_state) {
+            function() {
               return true;
             }
           ]
